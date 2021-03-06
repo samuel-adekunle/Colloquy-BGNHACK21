@@ -8,7 +8,9 @@ export default function EditBot() {
   const [questionGroups, setQuestionGroups] = useState([]);
   const removeQuestion = (id) => {
     setQuestionGroups((oldGroups) => {
-      oldGroups[id].questions.pop();
+      let oldItem = oldGroups[id];
+      oldItem.questions.pop();
+      oldGroups.splice(id,id,oldItem);
       return oldGroups;
     })
   }
@@ -30,13 +32,7 @@ export default function EditBot() {
   
   const removeGroup = () => {
     setQuestionGroups((oldGroups) => {
-      if (oldGroups.length === 1) {
-        return oldGroups.splice(1);
-      }
-      else {
-        return oldGroups.splice(-1, 1);
-      }
-
+      setQuestionGroups((oldGroups) => oldGroups.splice(0, oldGroups.length - 1))
     })
   };
   return (
