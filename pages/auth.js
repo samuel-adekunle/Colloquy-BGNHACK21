@@ -2,6 +2,7 @@ import firebase from "firebase/app"
 import "firebase/auth"
 import { AuthAction, withAuthUser } from "next-firebase-auth"
 import { useState } from "react"
+import { createUser } from "../utils/chatApi"
 
 function Auth() {
 	const [email, setEmail] = useState("")
@@ -14,7 +15,9 @@ function Auth() {
 
 	const handleSubmit = async () => {
 		if (await isNewUser()) {
-			await firebase.auth().createUserWithEmailAndPassword(email, password)
+			await firebase.auth().createUserWithEmailAndPassword(email, password).then(userCredential => {
+				await createUser(email, userCredential.user.uid)
+			})
 		} else {
 			await firebase.auth().signInWithEmailAndPassword(email, password)
 		}
