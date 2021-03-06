@@ -112,6 +112,7 @@ function App() {
 						addBot={addBot}
 						renameBot={renameBot}
 						setCurrentBotIndex={setCurrentBotIndex}
+						currentBotIndex={currentBotIndex}
 					/>
 				</div>
 				<div className="col-span-4">
