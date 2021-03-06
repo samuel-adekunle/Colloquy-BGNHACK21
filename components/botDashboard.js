@@ -27,8 +27,8 @@ export default function BotDashboard({
 					remove={() => removeQuestionAt(index)}
 					add={() => addQuestionAt(index)}
 					modifyAnswer={changeAnswer}
-					modifyTitle={changeTitle}
-					modifyQuestion={changeQuestion}
+					changeTitle={changeTitle}
+					changeQuestion={changeQuestion}
 				/>
 			))}
 

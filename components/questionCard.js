@@ -6,8 +6,8 @@ export default function QuestionCard({
 	remove,
 	add,
 	modifyAnswer,
-	modifyTitle,
-	modifyQuestion,
+	changeTitle,
+	changeQuestion,
 	id,
 }) {
 	return (
@@ -18,7 +18,7 @@ export default function QuestionCard({
 				name="title"
 				type="text"
 				placeholder="add a tag here"
-				onChange={(e) => modifyTitle(id, e.target.value)}
+				onChange={(e) => 	changeTitle(id, e.target.value)}
 			/>
 			<div className="space-y-3 px-3">
 				{questions.map((q, qId) => (
@@ -27,8 +27,8 @@ export default function QuestionCard({
 							name="question"
 							placeholder="add a question here"
 							value={q}
-							key={q}
-							onChange={(e) => modifyQuestion(id, qId, e.target.value)}
+							key={qId}
+							onChange={(e) => changeQuestion(id, qId, e.target.value)}
 							className="w-full block border-2 rounded-lg pl-2" />)	
 				)}
 				<span className="flex">
