@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import { AuthAction, withAuthUser } from "next-firebase-auth";
+import Loader from "react-loader-spinner";
 import BotMenu from "../components/botMenu";
 import HeaderBar from "../components/headerBar";
 import ButtonFooter from "../components/buttonFooter";
@@ -15,7 +17,7 @@ const defaultQuestion = {
 	questions: ["How are you?", "how are you doing today?"],
 	answer: "Great, Thanks!",
 }
-export default function EditBot() {
+function EditBot() {
 	const [questionGroups, setQuestionGroups] = useState([defaultQuestion]);
 
   const addGroup = () => {
@@ -109,3 +111,16 @@ export default function EditBot() {
 
 	)
 }
+
+function Loading() {
+	return <div className="flex justify-center items-center w-full h-full top-20">
+		<Loader color="#000" height={200} width={200} />
+	</div>
+}
+
+export default withAuthUser({
+	whenAuthed: AuthAction.RENDER,
+	whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+	whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+	LoaderComponent: Loading
+})(EditBot);
