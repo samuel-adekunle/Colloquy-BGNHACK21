@@ -4,19 +4,25 @@ import Loader from "react-loader-spinner";
 import BotDashboard from "../components/botDashboard";
 import BotMenu from "../components/botMenu";
 import HeaderBar from "../components/headerBar";
+import { makeKeyGenerator } from "../utils/keyGen";
+
+export const keyGen = makeKeyGenerator()
 
 function App() {
 	// const [questionGroups, setQuestionGroups] = useState([defaultQuestion]);
 
 	const [bots, setBots] = useState([{
+		uid: keyGen("bb"),
 		name: "new bot",
 		intents: []
 	}]);
+
 	const [currentBotIndex, setCurrentBotIndex] = useState(0);
 
 	const addBot = () => {
 		setBots((prevState) => {
 			return [...prevState, {
+				uid: keyGen("bb"),
 				name: "new bot",
 				intents: []
 			}];
@@ -27,11 +33,12 @@ function App() {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex]
 			oldBot.intents.push({
+				uid: keyGen("qg"),
 				tag: "",
 				patterns: [""],
 				responses: [""]
 			})
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
+			return [...prevState.slice(0, currentBotIndex), oldBot, ...prevState.slice(currentBotIndex + 1)]
 		});
 	};
 
@@ -39,7 +46,7 @@ function App() {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex]
 			oldBot.intents[index].patterns.push("")
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
+			return [...prevState.slice(0, currentBotIndex), oldBot, ...prevState.slice(currentBotIndex + 1)]
 		});
 	};
 
@@ -48,7 +55,7 @@ function App() {
 			let oldBot = prevState[currentBotIndex]
 			oldBot.intents[index].tag = inputText
 			
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)
+			return [...prevState.slice(0, currentBotIndex), oldBot, ...prevState.slice(currentBotIndex + 1)
 		]
 		});
 	};
@@ -57,7 +64,7 @@ function App() {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex]
 			oldBot.intents[groupId].patterns[questionId] = inputText
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
+			return [...prevState.slice(0, currentBotIndex), oldBot, ...prevState.slice(currentBotIndex + 1)]
 		});
 	};
 
@@ -65,7 +72,7 @@ function App() {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex]
 			oldBot.intents[index].responses[0] = inputText
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
+			return [...prevState.slice(0, currentBotIndex), oldBot, ...prevState.slice(currentBotIndex + 1)]
 		});
 	};
 
@@ -73,17 +80,17 @@ function App() {
 		setBots((prevState) => {
 			let oldBot = prevState[id];
 			oldBot.name = newName;
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)];
+			return [...prevState.slice(0, id), oldBot, ...prevState.slice(id+1)];
 		})
 	}
 	const removeBot = () => {
 		setBots((prevState) => {
 			if (currentBotIndex !== 0) {	
 				setCurrentBotIndex(currentBotIndex - 1) 
-				return [...prevState.splice(0, currentBotIndex), ...prevState.splice(currentBotIndex + 1)];
+				return [...prevState.slice(0, currentBotIndex), ...prevState.slice(currentBotIndex + 1)];
 			}
 			else {
-				return [...prevState.splice(1)];
+				return [...prevState.slice(1)];
 			}
 		});
 	}
@@ -91,7 +98,7 @@ function App() {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex]
 			oldBot.intents.pop()
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
+			return [...prevState.slice(0, currentBotIndex), oldBot, ...prevState.slice(currentBotIndex + 1)]
 		});
 	};
 
@@ -99,7 +106,7 @@ function App() {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex]
 			oldBot.intents[index].patterns.pop()
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
+			return [...prevState.slice(0, currentBotIndex), oldBot, ...prevState.slice(currentBotIndex + 1)]
 		});
 	};
 

@@ -8,11 +8,11 @@ export default function BotMenu({ bots, renameBot, addBot, setCurrentBotIndex, c
       {bots.map((bot, index) => (
         editOn ? ( currentBotIndex!==index ? 
           (<p
-            key={index}
+            key={bot.uid}
             className = "text-blue-800 text-3xl py-3 border-b block focus:outline-none"
           >{bot.name}</p>) : (
             <input
-            key={index}
+            key={bot.uid}
             type="text"
             value={bot.name}
             className = "text-3xl py-3 block border-none focus:outline-none rounded"  
@@ -30,7 +30,7 @@ export default function BotMenu({ bots, renameBot, addBot, setCurrentBotIndex, c
           )
         ) : (
           <p
-          key={index}
+          key={bot.uid}
           onDoubleClick={() => {
             setEditOn(true);
           }}
