@@ -37,8 +37,7 @@ export default function EditBot() {
 			return [...oldGroups.splice(0, index), oldGroup, ...oldGroups.splice(index+1)]
 		})
 	}
-
-
+	
 	return (
 		<div className="text-gray-900">
 			<HeaderBar />
