@@ -1,21 +1,21 @@
-import { FaPlus, FaMinus } from "react-icons/fa";
-import QuestionCard from "../components/questionCard";
+import { AuthAction, useAuthUser, withAuthUser } from "next-firebase-auth";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
-export default function App() {
-  const dummyFunction = () => { };
-  return (
-    <div className="text-gray-900">
-      hee
-      <QuestionCard
-        title="Hello Questions"
-        questions={["how are you", "how is your wife"]}
-        answer="Great, thanks!"
-      />
-      <span className="flex justify-around">
-        <button className="w-full bg-green-100 grid grid-cols-1 justify-items-center py-1 rounded focus:ring-green-200 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 hover:bg-green-200" onClick={dummyFunction()}><i><FaPlus size={42}/></i></button>
-        <button className="w-full bg-red-100 grid grid-cols-1 justify-items-center py-1 rounded focus:ring-red-200 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 hover:bg-red-200" onClick={dummyFunction()}><i><FaMinus size={42}/></i></button>
-        </span>
-    </div>
-    
-  )
+function App() {
+	const authUser = useAuthUser()
+	return <div><button onClick={() => authUser.signOut()}>Sign Out</button></div>
 }
+
+function Loading() {
+	return <div className="flex justify-center items-center w-full h-full">
+		<Loader color="#000" height={200} width={200} />
+	</div>
+}
+
+export default withAuthUser({
+	whenAuthed: AuthAction.RENDER,
+	whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+	whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+	LoaderComponent: Loading
+})(App);

@@ -1,5 +1,3 @@
-import App from "./app";
-
-export default function Home() {
-	return <div><App /></div>
+export default function Index() {
+	return <div>Hello World</div>
 }
