@@ -19,8 +19,8 @@ const intentTemplate = {
 function App() {
 	// const [questionGroups, setQuestionGroups] = useState([defaultQuestion]);
 
-	const [bots, setBots] = useState([botTemplate])
-	const [currentBotIndex, setCurrentBotIndex] = useState(0)
+	const [bots, setBots] = useState([botTemplate]);
+	const [currentBotIndex, setCurrentBotIndex] = useState(0);
 
 	const addBot = () => {
 		setBots((prevState) => {
