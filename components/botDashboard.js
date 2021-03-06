@@ -19,7 +19,7 @@ export default function BotDashboard({
 		<div className="m-9">
 			{questionGroups.map((group, index) => (
 				<QuestionCard
-					key={index}
+					key={group.uid}
 					id={index}
 					title={group.tag}
 					questions={group.patterns}

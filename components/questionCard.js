@@ -1,4 +1,5 @@
 import { FaMinus, FaPlus } from "react-icons/fa";
+
 export default function QuestionCard({
 	title,
 	questions,
@@ -27,8 +28,8 @@ export default function QuestionCard({
 							name="question"
 							placeholder="add a question here"
 							value={q}
-							key={qId}
-							onChange={(e) => changeQuestion(id, qId, e.target.value)}
+							key={qId} //review
+							onChange={(e) => modifyQuestion(id, qId, e.target.value)}
 							className="w-full block border-2 rounded-lg pl-2" />)	
 				)}
 				<span className="flex">
