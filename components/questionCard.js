@@ -27,7 +27,7 @@ export default function QuestionCard({
 							name="question"
 							placeholder="add a question here"
 							value={q}
-							key={q}
+							key={qId}
 							onChange={(e) => modifyQuestion(id, qId, e.target.value)}
 							className="w-full block border-2 rounded-lg pl-2" />)	
 				)}

@@ -46,8 +46,10 @@ function App() {
 	const changeTitle = (index, inputText) => {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex]
-			oldBot.intents[index].title = inputText
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
+			oldBot.intents[index].tag = inputText
+			
+			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)
+		]
 		});
 	};
 
