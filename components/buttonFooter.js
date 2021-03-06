@@ -1,9 +1,13 @@
 export default function ButtonFooter({
 	removeBot
 }) {
+  const generateQuestions = () => {
+    let url = prompt("Enter the website url:");
+    alert(url)
+  }
   return (
     <header className="bg-gray-50 text-center p-3 -bottom-0 w-full flex justify-evenly">
-      <button className="footerBtn">
+      <button className="footerBtn" onClick={generateQuestions}>
         Generate Questions &amp; Answers from Website
       </button>
       <button className="footerBtn">Train Bot</button>

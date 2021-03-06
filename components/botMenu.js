@@ -10,7 +10,7 @@ export default function BotMenu({ bots, renameBot, addBot, setCurrentBotIndex, c
           (<p
             key={index}
             className = "text-blue-800 text-3xl py-3 border-b block focus:outline-none"
-          >{bot.name}</p>) : (
+            >{bot.name}</p>) : (
             <input
             key={index}
             type="text"
@@ -21,9 +21,7 @@ export default function BotMenu({ bots, renameBot, addBot, setCurrentBotIndex, c
             }}
             onKeyDown={(event) => {
               if (event.key === 'Enter' || event.key === 'Escape') {
-                setEditOn(false)
-                event.preventDefault()
-                event.stopPropagation()
+                setEditOn(false);
               }
             }}
           />

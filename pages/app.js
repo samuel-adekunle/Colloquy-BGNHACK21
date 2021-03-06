@@ -134,7 +134,7 @@ function App() {
 
 function Loading() {
 	return (
-		<div className="flex justify-center items-center w-full h-full top-20">
+		<div className="flex justify-center items-center w-full h-full my-1/5">
 			<Loader color="#000" height={200} width={200} />
 		</div>
 	);
