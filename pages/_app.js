@@ -1,10 +1,11 @@
-import "../styles/globals.css"
-import initAuth from "../utils/initAuth"
+import "../styles/globals.css";
+import "react-chat-widget/lib/styles.css";
+import initAuth from "../utils/initAuth";
 
-initAuth()
+initAuth();
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default MyApp;
