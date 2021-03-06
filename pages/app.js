@@ -3,19 +3,25 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
-	const authUser = useAuthUser()
-	return <div><button onClick={() => authUser.signOut()}>Sign Out</button></div>
+  const authUser = useAuthUser();
+  return (
+    <div>
+      <button onClick={() => authUser.signOut()}>Sign Out</button>
+    </div>
+  );
 }
 
 function Loading() {
-	return <div className="flex justify-center items-center w-full h-full">
-		<Loader color="#000" height={200} width={200} />
-	</div>
+  return (
+    <div className="flex justify-center items-center w-full h-full top-20">
+      <Loader color="#000" height={200} width={200} />
+    </div>
+  );
 }
 
 export default withAuthUser({
-	whenAuthed: AuthAction.RENDER,
-	whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
-	whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
-	LoaderComponent: Loading
+  whenAuthed: AuthAction.RENDER,
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  LoaderComponent: Loading,
 })(App);

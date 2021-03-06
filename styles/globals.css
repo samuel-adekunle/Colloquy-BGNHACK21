@@ -2,3 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+  .footerBtn{
+    @apply border-2 shadow p-4 rounded;
+  }
+}
