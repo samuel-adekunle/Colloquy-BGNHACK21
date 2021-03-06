@@ -9,35 +9,61 @@ const questionGroupTemplate = {
 	questions: [""],
 	answer: "",
 }
+const defaultQuestion = {
+	title: "Hello Questions",
+	questions: ["How are you?", "how are you doing today?"],
+	answer: "Great, Thanks!",
+}
 export default function EditBot() {
-	const [questionGroups, setQuestionGroups] = useState([]);
+	const [questionGroups, setQuestionGroups] = useState([defaultQuestion]);
 
-	const addGroup = () => {
-		setQuestionGroups((oldGroups) => [...oldGroups, questionGroupTemplate]);
-	}
+  const addGroup = () => {
+    setQuestionGroups((oldGroups) => [...oldGroups, questionGroupTemplate]);
+  };
 
 	const removeGroup = () => {
 		setQuestionGroups((oldGroups) => oldGroups.splice(0, oldGroups.length - 1))
 	};
 
-	const removeQuestionAt = (index) => {
-		setQuestionGroups((oldGroups) => {
-			let oldGroup = oldGroups[index]
-			oldGroup.questions.pop()
+  const removeQuestionAt = (index) => {
+    setQuestionGroups((oldGroups) => {
+      let oldGroup = oldGroups[index]
+      oldGroup.questions.pop()
 			
-			return [...oldGroups.splice(0, index), oldGroup, ...oldGroups.splice(index+1)]
-		})
-	}
+      return [...oldGroups.splice(0, index), oldGroup, ...oldGroups.splice(index + 1)]
+    })
+  };
 
-	const addQuestionAt = (index) => {
-		setQuestionGroups((oldGroups) => {
-			let oldGroup = oldGroups[index]
-			oldGroup.questions.push("")
+  const addQuestionAt = (index) => {
+    setQuestionGroups((oldGroups) => {
+      let oldGroup = oldGroups[index]
+      oldGroup.questions.push("")
 			
-			return [...oldGroups.splice(0, index), oldGroup, ...oldGroups.splice(index+1)]
-		})
-	}
-
+      return [...oldGroups.splice(0, index), oldGroup, ...oldGroups.splice(index + 1)]
+    })
+  };
+  
+  const changeTitle = (index, inputText) => {
+    setQuestionGroups((oldGroups) => {
+      let oldGroup = oldGroups[index]
+      oldGroup.title = inputText
+      return [...oldGroups.splice(0, index), oldGroup, ...oldGroups.splice(index + 1)]
+    })
+  }
+  const changeQuestion = (groupId, questionId, inputText) => {
+    setQuestionGroups((oldGroups) => {
+      let oldGroup = oldGroups[groupId];
+      oldGroup.questions[questionId] = inputText
+      return [...oldGroups.splice(0, index), oldGroup, ...oldGroups.splice(index + 1)]
+    })
+  }
+  const changeAnswer = (index, inputText) => {
+    setQuestionGroups((oldGroups) => {
+      let oldGroup = oldGroups[index]
+      oldGroup.answer = inputText
+      return [...oldGroups.splice(0, index), oldGroup, ...oldGroups.splice(index + 1)]
+    })
+  }
 
 	return (
 		<div className="text-gray-900">
@@ -47,19 +73,18 @@ export default function EditBot() {
 					<BotMenu />
 				</div>
 				<div className="col-span-4 m-7">
-					<QuestionCard
-						title="Hello Questions"
-						questions={["how are you", "how is your wife"]}
-						answer="Great, thanks!"
-					/>
 					{questionGroups.map((group, index) => (
 						<QuestionCard 
-							key={index}
+              key={index}
+              id={index}
 							title={group.title} 
 							questions={group.questions} 
 							answer={group.answer}
 							remove={() => removeQuestionAt(index)} 
-							add={() => addQuestionAt(index)} />
+              add={() => addQuestionAt(index)}
+              modifyAnswer={changeAnswer}
+              modifyTitle={changeTitle}
+            />
 					))}
 					
 					<span className="flex justify-around">
