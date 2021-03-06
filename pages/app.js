@@ -5,33 +5,32 @@ import BotDashboard from "../components/botDashboard";
 import BotMenu from "../components/botMenu";
 import HeaderBar from "../components/headerBar";
 
-const botTemplate = {
-	name: "my bot",
-	intents: []
-}
-
-const intentTemplate = {
-	tag: "",
-	patterns: [""],
-	responses: [""]
-}
-
 function App() {
 	// const [questionGroups, setQuestionGroups] = useState([defaultQuestion]);
 
-	const [bots, setBots] = useState([botTemplate]);
+	const [bots, setBots] = useState([{
+		name: "new bot",
+		intents: []
+	}]);
 	const [currentBotIndex, setCurrentBotIndex] = useState(0);
 
 	const addBot = () => {
 		setBots((prevState) => {
-			return [botTemplate, ...prevState];
+			return [...prevState, {
+				name: "new bot",
+				intents: []
+			}];
 		});
 	}
 
 	const addGroup = () => {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex]
-			oldBot.intents.push(intentTemplate)
+			oldBot.intents.push({
+				tag: "",
+				patterns: [""],
+				responses: [""]
+			})
 			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
 		});
 	};
