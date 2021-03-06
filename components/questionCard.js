@@ -1,9 +1,8 @@
-import { FaPlus, FaMinus } from "react-icons/fa";
-export default function QuestionCard({ title, questions, answer, remove,add }) {
-  const dummyFunction = () => { };
+import { FaMinus, FaPlus } from "react-icons/fa";
+export default function QuestionCard({ title, questions, answer, remove, add }) {
   return (
     <div className="border-4 rounded-md p-3 bg-blue-50 mt-3">
-      <input className="text-2xl pl-2" value={ title} name="title" type="text"/>
+      <input className="text-2xl pl-2" value={title} name="title" type="text"/>
       <div className="space-y-3 px-3">
         {
           questions.map((q) => (

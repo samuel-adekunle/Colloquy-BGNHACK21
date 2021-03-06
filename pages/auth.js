@@ -15,7 +15,7 @@ function Auth() {
 
 	const handleSubmit = async () => {
 		if (await isNewUser()) {
-			await firebase.auth().createUserWithEmailAndPassword(email, password).then(userCredential => {
+			await firebase.auth().createUserWithEmailAndPassword(email, password).then(async userCredential => {
 				await createUser(email, userCredential.user.uid)
 			})
 		} else {
