@@ -24,45 +24,14 @@ function App() {
 
 	const addBot = () => {
 		setBots((prevState) => {
-			return [...prevState, botTemplate];
+			return [botTemplate, ...prevState];
 		});
-	}
-
-	const removeBot = () => {
-		setBots((prevState) => {
-			setCurrentBotIndex(currentBotIndex - 1) //
-			return [...prevState.splice(0, currentBotIndex), ...prevState.splice(currentBotIndex + 1)];
-		});
-	}
-
-	const renameBot = (id, newName) => {
-		setBots((prevState) => {
-			let oldBot = prevState[id];
-			oldBot.name = newName;
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)];
-		})
 	}
 
 	const addGroup = () => {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex]
 			oldBot.intents.push(intentTemplate)
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
-		});
-	};
-
-	const removeGroup = () => {
-		setBots((prevState) => {
-			let oldBot = prevState[currentBotIndex]
-			oldBot.intents.pop()
-			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
-		});
-	};
-
-	const removeQuestionAt = (index) => {
-		setBots((prevState) => {
-			let oldBot = prevState[currentBotIndex]
-			oldBot.intents[index].patterns.pop()
 			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
 		});
 	};
@@ -95,6 +64,40 @@ function App() {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex]
 			oldBot.intents[index].responses[0] = inputText
+			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
+		});
+	};
+
+	const renameBot = (id, newName) => {
+		setBots((prevState) => {
+			let oldBot = prevState[id];
+			oldBot.name = newName;
+			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)];
+		})
+	}
+	const removeBot = () => {
+		setBots((prevState) => {
+			if (currentBotIndex !== 0) {	
+				setCurrentBotIndex(currentBotIndex - 1) 
+				return [...prevState.splice(0, currentBotIndex), ...prevState.splice(currentBotIndex + 1)];
+			}
+			else {
+				return [...prevState.splice(1)];
+			}
+		});
+	}
+	const removeGroup = () => {
+		setBots((prevState) => {
+			let oldBot = prevState[currentBotIndex]
+			oldBot.intents.pop()
+			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
+		});
+	};
+
+	const removeQuestionAt = (index) => {
+		setBots((prevState) => {
+			let oldBot = prevState[currentBotIndex]
+			oldBot.intents[index].patterns.pop()
 			return [...prevState.splice(0, currentBotIndex), oldBot, ...prevState.splice(currentBotIndex + 1)]
 		});
 	};

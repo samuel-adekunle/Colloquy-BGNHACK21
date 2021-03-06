@@ -8,8 +8,8 @@ export default function ButtonFooter({
       </button>
       <button className="footerBtn">Train Bot</button>
       <button className="footerBtn">Test Bot</button>
-			<button className="footerBtn" onClick={removeBot}>Delete Bot</button>
       <button className="footerBtn">Generate Embed</button>
+			<button className="footerBtn bg-red-300" onClick={removeBot}>Delete Bot</button>
     </header>
   );
 }

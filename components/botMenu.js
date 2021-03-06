@@ -21,7 +21,7 @@ export default function BotMenu({ bots, renameBot, addBot, setCurrentBotIndex })
           <input
             key={index}
             type="text"
-             value={bot.name}
+            value={bot.name}
             className = "text-3xl py-3 block border-none focus:outline-none rounded"  
             onChange={(e) => {
               renameBot(index, e.target.value);
