@@ -4,7 +4,17 @@
 @tailwind utilities;
 
 @layer components{
-  .footerBtn{
-    @apply border-2 shadow p-4 rounded;
+  .btn{
+    @apply border-2 shadow p-4 rounded
+          focus:outline-none focus:ring-opacity-50 focus:ring focus:ring-offset-1
+          transform transition hover:-translate-y-0.5;
+  }
+  .menuText {
+    @apply text-blue-800 text-3xl border-b block pl-3
+          focus:outline-none focus:ring-opacity-50 focus:ring focus:ring-offset-1
+          transform transition hover:-translate-y-0.5 hover:bg-gray-100 hover:text-indigo-800;
+  }
+  .inputBox{
+    @apply rounded-lg border-blue-100 border-2 pl-2;
   }
 }

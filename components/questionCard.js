@@ -14,7 +14,7 @@ export default function QuestionCard({
   return (
     <div className="border-4 border-blue-100 rounded-md p-3 bg-blue-50 mt-3">
       <input
-        className="text-2xl rounded-lg border-b pl-2 mb-2"
+        className="text-2xl inputBox mb-2"
         value={title}
         name="title"
         type="text"
@@ -30,7 +30,7 @@ export default function QuestionCard({
             value={q}
             key={qId} //review
             onChange={(e) => changeQuestion(id, qId, e.target.value)}
-            className="w-full block border-2 rounded-lg pl-2"
+            className="w-full block inputBox"
           />
         ))}
         <span className="flex">
@@ -47,7 +47,7 @@ export default function QuestionCard({
           name="answer"
           placeholder="add the answer to these questions here"
           value={answer}
-          className="w-full border-b-2 rounded-lg pl-2"
+          className="w-full inputBox"
           onChange={(e) => modifyAnswer(id, e.target.value)}
         />
       </div>

@@ -23,15 +23,15 @@ export default function ButtonFooter({
   };
   return (
     <header className="bg-gray-50 text-center p-3 -bottom-0 w-full flex justify-evenly">
-      <button className="footerBtn" onClick={generateQuestions}>
+      <button className="btn" onClick={generateQuestions}>
         Generate Questions &amp; Answers from Website
       </button>
-      <button className="footerBtn">Train Bot</button>
-      <button className="footerBtn">Test Bot</button>
-      <button className="footerBtn">Generate Embed</button>
+      <button className="btn">Train Bot</button>
+      <button className="btn">Test Bot</button>
+      <button className="btn">Generate Embed</button>
 
       {canDelete && (
-        <button className="footerBtn bg-red-300" onClick={removeBot}>
+        <button className="btn bg-red-300 hover:bg-red-200" onClick={removeBot}>
           Delete Bot
         </button>
       )}
