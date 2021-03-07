@@ -6,7 +6,7 @@ import initAuth, { firebaseConfig } from "../utils/initAuth";
 initAuth();
 
 if (firebase.apps.length == 0) {
-	firebase.initializeApp(firebaseConfig)
+  firebase.initializeApp(firebaseConfig);
 }
 
 function MyApp({ Component, pageProps }) {
