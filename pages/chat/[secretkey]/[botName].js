@@ -4,12 +4,10 @@ import { useRouter } from "next/router";
 import React, { useRef, useState } from "react";
 import Message from "../../../components/Message";
 
-
 const Chat = () => {
+  const router = useRouter();
 
-	const router = useRouter()
-
-	const {secretkey, botName} = router.query
+  const { secretkey, botName } = router.query;
 
   const messagesEnd = useRef(null);
 

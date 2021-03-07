@@ -14,10 +14,7 @@ export default function BotMenu({
       {bots.map((bot, index) =>
         editOn ? (
           currentBotIndex !== index ? (
-            <p
-              key={bot.uid}
-              className="menuText"
-            >
+            <p key={bot.uid} className="menuText">
               {bot.name}
             </p>
           ) : (
@@ -45,13 +42,18 @@ export default function BotMenu({
             onClick={() => {
               setCurrentBotIndex(index);
             }}
-            className={currentBotIndex == index ? "menuText bg-blue-100":"menuText" }
+            className={
+              currentBotIndex == index ? "menuText bg-blue-100" : "menuText"
+            }
           >
             {bot.name}
           </p>
         )
       )}
-      <button className="btn bottom-1 bg-green-300 hover:bg-green-200" onClick={addBot}>
+      <button
+        className="btn bottom-1 bg-green-300 hover:bg-green-200"
+        onClick={addBot}
+      >
         Add Bot
       </button>
     </div>

@@ -29,9 +29,13 @@ function Auth() {
   return (
     <div className="p-1/5 bg-gradient-to-r from-blue-500 via-indigo-400 to-blue-500">
       <div className="mx-auto p-5 border rounded-xl shadow-lg w-min whitespace-pre space-y-5 bg-gray-50">
-        <h1 className="text-3xl text-center pb-3 font-medium">Register or Login</h1>
+        <h1 className="text-3xl text-center pb-3 font-medium">
+          Login or Register
+        </h1>
         <div className="mb-3">
-          <label className="block pl-1 font-light text-lg" htmlFor="Email">Email</label>
+          <label className="block pl-1 font-light text-lg" htmlFor="Email">
+            Email
+          </label>
           <input
             id="Email"
             type="text"
@@ -41,7 +45,9 @@ function Auth() {
           />
         </div>
         <div>
-        <label className="block pl-1  font-light text-lg" htmlFor="Password">Password</label>
+          <label className="block pl-1  font-light text-lg" htmlFor="Password">
+            Password
+          </label>
           <input
             id="Password"
             type="password"
