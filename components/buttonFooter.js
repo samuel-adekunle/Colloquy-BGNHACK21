@@ -21,6 +21,7 @@ export default function ButtonFooter({
     // some code to use the url to get the intents
     addUrlGeneratedQuestions(intentsTest);
   };
+
   return (
     <div>
       <div className="phantom" />
@@ -32,11 +33,11 @@ export default function ButtonFooter({
         <button className="btn">Test Bot</button>
         <button className="btn">Generate Embed</button>
 
-        {canDelete ? ( //what is this and why is it here? the button doesn't show at all for me anymore -Tof
+        {canDelete && (
           <button className="btn bg-red-300 hover:bg-red-200" onClick={removeBot}>
             Delete Bot
           </button>
-        ):(<></>)}
+        )}
       </header>
     </div>
   );
