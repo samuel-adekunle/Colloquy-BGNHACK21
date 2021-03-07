@@ -53,7 +53,7 @@ function App() {
 	const addIntents = (newIntents) => {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex];
-			oldBot.intents = [...oldBot.intents, newIntents];
+			oldBot.intents = [...oldBot.intents, ...newIntents];
 			return [...prevState.slice(0, currentBotIndex), oldBot, ...prevState.slice(currentBotIndex + 1)]
 		});
 	}
