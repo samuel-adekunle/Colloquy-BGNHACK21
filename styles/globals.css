@@ -10,7 +10,7 @@
           transform transition hover:-translate-y-0.5;
   }
   .menuText {
-    @apply text-blue-800 text-3xl border-b block pl-3 font-light
+    @apply text-blue-800 text-3xl border-b block pl-3 font-light py-3
           focus:outline-none focus:ring-opacity-50 focus:ring focus:ring-offset-1
           transform transition hover:-translate-y-0.5 hover:bg-gray-100 hover:text-indigo-800;
   }
