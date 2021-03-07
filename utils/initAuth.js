@@ -35,7 +35,7 @@ const initAuth = () => {
         process.env.COOKIE_SECRET_CURRENT,
         process.env.COOKIE_SECRET_PREVIOUS,
       ],
-      httpOnly: true,
+      httpOnly: false,
       maxAge: 12 * 60 * 60 * 24 * 1000, // twelve days
       overwrite: true,
       path: '/',
