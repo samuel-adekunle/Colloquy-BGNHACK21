@@ -24,6 +24,12 @@ export async function trainModel(secretKey, botUID, intents) {
 	// console.log(res)
 }
 
+export async function deleteModel(secretKey, botUID) {
+	return await fetch(`${BASE_URL}/deleteModel/secretkey=${secretKey}/modelName=${botUID}`)
+	// res = await res.json()
+	// console.log(res)
+}
+
 export async function getResponse(secretKey, botUID, message) {
 	let res = await fetch(`${BASE_URL}/getResponse/secretkey=${secretKey}/modelName=${botUID}/message=${message}`)
 	res = await res.json()

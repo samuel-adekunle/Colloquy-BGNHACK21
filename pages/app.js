@@ -11,7 +11,7 @@ import Loader from "react-loader-spinner";
 import BotDashboard from "../components/botDashboard";
 import BotMenu from "../components/botMenu";
 import HeaderBar from "../components/headerBar";
-import { getSecretKey, getTemplate, TEMPLATES, trainModel } from "../utils/chatApi";
+import { deleteModel, getSecretKey, getTemplate, TEMPLATES, trainModel } from "../utils/chatApi";
 import { makeKeyGenerator } from "../utils/keyGen";
 
 export const keyGen = makeKeyGenerator();
@@ -57,8 +57,10 @@ function App({ userBots, userKey }) {
 				...bots.slice(currentBotIndex + 1),
 			];
 
-			ref.set(newState);
+			deleteModel(userKey, authUser.id)
 
+			ref.set(newState);
+	
 			setBots(() => {
 				setCurrentBotIndex(Math.max(0, currentBotIndex - 1));
 				return newState;
