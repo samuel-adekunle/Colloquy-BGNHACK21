@@ -15,7 +15,10 @@ export async function getSecretKey(email, uid) {
 export async function trainModel(secretKey, botUID, intents) {
 	let res = await fetch(`${BASE_URL}/trainNewModel/secretkey=${secretKey}/modelName=${botUID}`, {
 		method: "POST",
-		body: JSON.stringify({intents})
+		body: JSON.stringify({intents}),
+		headers: {
+			"Content-Type": "application/json"
+		}
 	})
 	res = await res.json()
 	console.log(res)

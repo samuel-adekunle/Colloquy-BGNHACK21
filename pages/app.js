@@ -199,7 +199,7 @@ function App({ userBots, userKey }) {
     setBots(newState);
   };
 
-	const trainBot = async () => {
+	const trainBot = () => {
 		trainModel(userKey, bots[currentBotIndex]["uid"], bots[currentBotIndex]["intents"])
 		.then(window.alert("Done Training Bot"))
 		.catch(console.log)
