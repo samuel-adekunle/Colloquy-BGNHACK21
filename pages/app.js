@@ -43,6 +43,7 @@ function App({ userBots, userKey }) {
       {
         uid: keyGen("bb"),
         name: "new bot",
+				isTrained: false,
         intents: [
           {
             uid: keyGen("qg"),
@@ -247,6 +248,21 @@ function App({ userBots, userKey }) {
     setBots(newState);
   };
 
+	const setBotTrained = () => {
+		let oldBot = bots[currentBotIndex];
+    oldBot.isTrained = true
+
+    const newState = [
+      ...bots.slice(0, currentBotIndex),
+      oldBot,
+      ...bots.slice(currentBotIndex + 1),
+    ];
+
+    ref.set(newState);
+
+    setBots(newState);
+	}
+
   const trainBot = async () => {
     setTraining(true);
     const botName = bots[currentBotIndex]["name"];
@@ -259,6 +275,9 @@ function App({ userBots, userKey }) {
       .then((resJson) => {
         window.alert(`Finished training ${botName}`);
         console.log(resJson);
+
+				setBotTrained()
+
         setTraining(false);
       });
   };
@@ -348,6 +367,7 @@ export const getServerSideProps = withAuthUserTokenSSR({
 			{
 				uid: keyGen("bb"),
 				name: "new bot",
+				isTrained: false,
 				intents: [
 					{
 						uid: keyGen("qg"),
