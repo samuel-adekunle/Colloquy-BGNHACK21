@@ -10,7 +10,7 @@ export default function BotMenu({
 
   return (
     <div className="fixed bg-white top-0 left-0 w-1/5 shadow flex flex-col h-screen justify-between">
-      <h1 className="text-5xl mt-3 text-center p-3">Your Bots</h1>
+      <h1 className="text-5xl mt-3 text-center p-3 font-medium">Your Bots</h1>
       {bots.map((bot, index) =>
         editOn ? (
           currentBotIndex !== index ? (

@@ -10,11 +10,17 @@
           transform transition hover:-translate-y-0.5;
   }
   .menuText {
-    @apply text-blue-800 text-3xl border-b block pl-3
+    @apply text-blue-800 text-3xl border-b block pl-3 font-light
           focus:outline-none focus:ring-opacity-50 focus:ring focus:ring-offset-1
           transform transition hover:-translate-y-0.5 hover:bg-gray-100 hover:text-indigo-800;
   }
   .inputBox{
     @apply rounded-lg border-blue-100 border-2 pl-2;
+  }
+  .phantom {
+    display: block;
+    padding: 20px;
+    height: 60px;
+    width: 100%;
   }
 }

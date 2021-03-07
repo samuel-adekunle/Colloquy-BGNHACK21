@@ -21,20 +21,29 @@ export default function ButtonFooter({
     // some code to use the url to get the intents
     addUrlGeneratedQuestions(intentsTest);
   };
+  const phantomStyle = {
+    display: "block",
+    padding: "20px",
+    height: "60px",
+    width: "100%"
+  };
   return (
-    <header className="bg-gray-50 text-center p-3 -bottom-0 w-full flex justify-evenly">
-      <button className="btn" onClick={generateQuestions}>
-        Generate Questions &amp; Answers from Website
-      </button>
-      <button className="btn">Train Bot</button>
-      <button className="btn">Test Bot</button>
-      <button className="btn">Generate Embed</button>
-
-      {canDelete && (
-        <button className="btn bg-red-300 hover:bg-red-200" onClick={removeBot}>
-          Delete Bot
+    <div>
+      <div className="phantom" />
+      <header className="bg-gray-50 text-center p-3 bottom-0 w-full flex justify-evenly fixed">
+        <button className="btn" onClick={generateQuestions}>
+          Generate Questions &amp; Answers from Website
         </button>
-      )}
-    </header>
+        <button className="btn">Train Bot</button>
+        <button className="btn">Test Bot</button>
+        <button className="btn">Generate Embed</button>
+
+        {canDelete && (
+          <button className="btn bg-red-300 hover:bg-red-200" onClick={removeBot}>
+            Delete Bot
+          </button>
+        )}
+      </header>
+    </div>
   );
 }

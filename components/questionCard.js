@@ -38,7 +38,7 @@ export default function QuestionCard({
           <button className="mx-2" onClick={add}>
             <FaPlus />
           </button>
-          <button className="mx-2 hover:bg-red-200" onClick={remove}>
+          <button className="mx-2" onClick={remove}>
             <FaMinus />
           </button>
         </span>
