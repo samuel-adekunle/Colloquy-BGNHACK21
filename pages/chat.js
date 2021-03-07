@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios/index";
-import 'materialize-css/dist/css/materialize.min.css';
-
+import "materialize-css/dist/css/materialize.min.css";
 
 import Message from "../components/Message";
 
@@ -26,7 +25,7 @@ const Chat = () => {
     });
 
     const res = await axios.get(
-      `http://ec2-18-135-99-244.eu-west-2.compute.amazonaws.com/getResponse/secretkey=34bd903c-7f34-11eb-ad56-06298c397d52/modelName=chitti/message=${queryText}`
+      `http://ec2-18-135-99-244.eu-west-2.compute.amazonaws.com/getResponse/secretkey=380f45dc-7f4d-11eb-ad56-06298c397d52/modelName=chitti/message=${queryText}`
     );
 
     says = {
@@ -40,7 +39,6 @@ const Chat = () => {
     messagesEnd.current.focus();
 
     messagesEnd.current.scrollIntoView({ behavior: "smooth" });
-
   };
 
   const renderMessages = (returnedMessages) => {
@@ -65,12 +63,27 @@ const Chat = () => {
   };
 
   return (
-    <div style={{ height: 400, width: 400, float: "right" }}>
+    <div
+      style={{
+        height: 600,
+        width: 400,
+        marginTop: 50,
+        marginBottom: 50,
+        marginLeft: 200,
+        // border: "2px solid blue",
+      }}
+    >
+      <h2 style={{ backgroundColor: "#EE6E73", padding: 15 }}>Chat</h2>
       <div
         id="chatbot"
-        style={{ height: "100%", width: "100%", overflow: "auto" }}
+        style={{
+          height: "75%",
+          width: "100%",
+          overflow: "auto",
+          // border: "2px solid black",
+          borderColor: "#EE6E73",
+        }}
       >
-        <h2>Chat</h2>
         {renderMessages(messages)}
         <input
           ref={messagesEnd}
