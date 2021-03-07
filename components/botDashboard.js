@@ -13,7 +13,6 @@ export default function BotDashboard({
   changeTitle,
   changeQuestion,
   removeBot,
-  canDelete,
   addUrlGeneratedQuestions,
 	trainBot
 }) {
