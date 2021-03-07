@@ -11,7 +11,7 @@ import Loader from "react-loader-spinner";
 import BotDashboard from "../components/botDashboard";
 import BotMenu from "../components/botMenu";
 import HeaderBar from "../components/headerBar";
-import { getSecretKey, trainModel } from "../utils/chatApi";
+import { getSecretKey, TEMPLATES, trainModel } from "../utils/chatApi";
 import { makeKeyGenerator } from "../utils/keyGen";
 
 export const keyGen = makeKeyGenerator();
@@ -114,6 +114,17 @@ function App({ userBots, userKey }) {
 
     setBots(newState);
   };
+
+	const importTemplates = () => {
+		const templates = Object.keys(TEMPLATES).map((v, i) => `${i+1}. ${v}`).join("\n")
+
+		console.log(templates)
+		window.prompt(
+			`Select a template to import:
+			`,
+
+		)
+	}
 
   const changeTitle = (index, inputText) => {
     let oldBot = bots[currentBotIndex];
@@ -238,7 +249,7 @@ function App({ userBots, userKey }) {
             changeTitle={changeTitle}
             removeQuestionAt={removeQuestionAt}
             removeBot={removeBot}
-            addUrlGeneratedQuestions={addIntents}
+            importTemplates={importTemplates}
 						trainBot={trainBot}
 						training={training}
           />

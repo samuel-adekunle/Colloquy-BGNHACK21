@@ -1,8 +1,9 @@
 export function makeKeyGenerator() {
+	const date = Date.now()
 	let counter = 0
-	return function(index) {
-		const key = `__${index}__${counter}`
+	return function(key) {
+		const _key = `${date}_${key}_${counter}`
 		counter += 1
-		return key
+		return _key
 	}
 }

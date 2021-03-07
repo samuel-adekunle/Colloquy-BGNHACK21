@@ -30,7 +30,7 @@ export async function getResponse(secretKey, botUID, message) {
 	return res
 }
 
-const TEMPLATES = {
+export const TEMPLATES = {
 	basic: "basic",
 	bookseller: "bookseller",
 	cafe: "cafe",
