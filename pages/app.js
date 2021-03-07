@@ -283,7 +283,7 @@ function App({ userBots, userKey }) {
   };
 
 	const generateEmbed = () => {
-		const embed = `<iframe style={{margin: 0, padding: 0, border: "none", width: "500px", height: "700px"}} src="http://localhost:3001/chat/${userKey}/${bots[currentBotIndex]["uid"]}" />`
+		const embed = `<iframe style={{margin: 0, padding: 0, border: "none", width: "500px", height: "700px"}} src="https://colloquy.vercel.app/chat/${userKey}/${bots[currentBotIndex]["uid"]}" />`
 		window.alert(`Embed: ${embed}`)
 	}
 
