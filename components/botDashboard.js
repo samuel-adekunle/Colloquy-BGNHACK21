@@ -29,6 +29,7 @@ export default function BotDashboard({
         trainBot={trainBot}
         training={training}
         importTemplates={importTemplates}
+        testBot={testBot}
       />
         {questionGroups &&
           questionGroups.map((group, index) => (
