@@ -48,5 +48,5 @@ export const TEMPLATES = {
 export async function getTemplate(templateName) {
 	let res = await fetch(`${BASE_URL}/getTemplate/templateName=${templateName}`)
 	res = await res.json()
-	return res
+	return res["intents"]
 }
