@@ -1,28 +1,31 @@
 import admin from "firebase-admin";
 import firebase from "firebase/app";
 import {
-  AuthAction,
-  useAuthUser,
-  withAuthUser,
-  withAuthUserTokenSSR,
+	AuthAction,
+	useAuthUser,
+	withAuthUser,
+	withAuthUserTokenSSR
 } from "next-firebase-auth";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import Loader from "react-loader-spinner";
 import BotDashboard from "../components/botDashboard";
 import BotMenu from "../components/botMenu";
 import HeaderBar from "../components/headerBar";
 import {
-  deleteModel,
-  getSecretKey,
-  getTemplate,
-  TEMPLATES,
-  trainModel,
+	deleteModel,
+	getSecretKey,
+	getTemplate,
+	TEMPLATES,
+	trainModel
 } from "../utils/chatApi";
 import { makeKeyGenerator } from "../utils/keyGen";
 
 export const keyGen = makeKeyGenerator();
 
 function App({ userBots, userKey }) {
+	const router = useRouter()
+
   const authUser = useAuthUser();
   const db = firebase.database();
 
@@ -63,7 +66,7 @@ function App({ userBots, userKey }) {
         ...bots.slice(currentBotIndex + 1),
       ];
 
-      deleteModel(userKey, authUser.id);
+      deleteModel(userKey, bots[currentBotIndex]["uid"]);
 
       ref.set(newState);
 
@@ -260,6 +263,10 @@ function App({ userBots, userKey }) {
       });
   };
 
+	const testBot = () => {
+		window.open(`/chat/${userKey}/${bots[currentBotIndex]["uid"]}`, "_blank")
+	}
+
   return (
     <div className="text-gray-900 flex flex-col h-screen justify-between bg-gray-50">
       <div className="grid grid-cols-5">
@@ -288,6 +295,7 @@ function App({ userBots, userKey }) {
             importTemplates={importTemplates}
             trainBot={trainBot}
             training={training}
+						testBot={testBot}
           />
         </div>
       </div>

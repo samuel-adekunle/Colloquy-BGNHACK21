@@ -16,6 +16,7 @@ export default function BotDashboard({
   trainBot,
   training,
   importTemplates,
+	testBot
 }) {
   const { intents: questionGroups } = bots[currentBotIndex];
 
@@ -71,6 +72,7 @@ export default function BotDashboard({
         trainBot={trainBot}
         training={training}
         importTemplates={importTemplates}
+				testBot={testBot}
       />
     </>
   );

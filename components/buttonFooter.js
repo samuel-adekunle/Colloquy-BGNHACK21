@@ -1,21 +1,10 @@
-const intentsTest = [
-  {
-    tag: "hello",
-    patterns: ["hi", "how are you"],
-    responses: ["hey"],
-  },
-  {
-    tag: "test",
-    patterns: ["jkl", "asdf"],
-    responses: ["1234"],
-  },
-];
 export default function ButtonFooter({
   removeBot,
   canDelete,
   trainBot,
   training,
   importTemplates,
+	testBot
 }) {
   return (
     <div>
@@ -29,7 +18,7 @@ export default function ButtonFooter({
             Train Bot
           </button>
         )}
-        <button className="btn">Test Bot</button>
+        <button className="btn" onClick={testBot}>Test Bot</button>
         <button className="btn">Generate Embed</button>
 
         {canDelete && (
