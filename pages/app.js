@@ -7,7 +7,6 @@ import {
 	withAuthUserTokenSSR
 } from "next-firebase-auth";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import Loader from "react-loader-spinner";
 import BotDashboard from "../components/botDashboard";
@@ -25,7 +24,6 @@ import { makeKeyGenerator } from "../utils/keyGen";
 export const keyGen = makeKeyGenerator();
 
 function App({ userBots, userKey }) {
-	const router = useRouter()
   const authUser = useAuthUser();
   const db = firebase.database();
 
