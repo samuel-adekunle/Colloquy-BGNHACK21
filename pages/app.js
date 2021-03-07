@@ -68,12 +68,23 @@ function App({ userBots, userKey }) {
 
 	const addGroup = () => {
 		let oldBot = bots[currentBotIndex];
-		oldBot.intents.push({
-			uid: keyGen("qg"),
-			tag: "",
-			patterns: [""],
-			responses: [""],
-		});
+		if (oldBot.intents) {
+			oldBot.intents.push({
+				uid: keyGen("qg"),
+				tag: "",
+				patterns: [""],
+				responses: [""],
+			});
+		}
+		else {
+			oldBot.intents = [{
+				uid: keyGen("qg"),
+				tag: "",
+				patterns: [""],
+				responses: [""],
+			}]
+		}
+
 		const newState = [
 			...bots.slice(0, currentBotIndex),
 			oldBot,

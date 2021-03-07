@@ -22,7 +22,7 @@ export default function BotDashboard({
   return (
     <>
       <div className="m-9">
-        {questionGroups.map((group, index) => (
+        {questionGroups && questionGroups.map((group, index) => (
           <QuestionCard
             key={group.uid}
             id={index}
@@ -48,7 +48,7 @@ export default function BotDashboard({
               <FaPlus size={42} />
             </i>
           </button>
-          {questionGroups.length === 0 ? (
+          {!questionGroups || questionGroups.length === 0 ? (
             <span />
           ) : (
             <button
