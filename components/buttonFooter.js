@@ -21,7 +21,8 @@ const intentsTest = [
   }
 ];
 export default function ButtonFooter({
-  removeBot,
+	removeBot,
+	canDelete,
   addUrlGeneratedQuestions
 }) {
   const generateQuestions = () => {
@@ -38,7 +39,8 @@ export default function ButtonFooter({
       <button className="footerBtn">Train Bot</button>
       <button className="footerBtn">Test Bot</button>
       <button className="footerBtn">Generate Embed</button>
-			<button className="footerBtn bg-red-300" onClick={removeBot}>Delete Bot</button>
+
+			{canDelete && <button className="footerBtn bg-red-300" onClick={removeBot}>Delete Bot</button>}
     </header>
   );
 }
