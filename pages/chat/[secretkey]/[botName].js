@@ -1,10 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
 import axios from "axios/index";
 import "materialize-css/dist/css/materialize.min.css";
+import { useRouter } from "next/router";
+import React, { useRef, useState } from "react";
+import Message from "../../../components/Message";
 
-import Message from "../components/Message";
 
 const Chat = () => {
+
+	const router = useRouter()
+
+	const {secretkey, botName} = router.query
+
   const messagesEnd = useRef(null);
 
   const [messages, setMessages] = useState([
@@ -25,7 +31,7 @@ const Chat = () => {
     });
 
     const res = await axios.get(
-      `http://ec2-18-135-99-244.eu-west-2.compute.amazonaws.com/getResponse/secretkey=380f45dc-7f4d-11eb-ad56-06298c397d52/modelName=chitti/message=${queryText}`
+      `http://ec2-18-135-99-244.eu-west-2.compute.amazonaws.com/getResponse/secretkey=${secretkey}/modelName=${botName}/message=${queryText}`
     );
 
     says = {
