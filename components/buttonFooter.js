@@ -26,7 +26,7 @@ export default function ButtonFooter({
   return (
     <div>
       <div className="phantom" />
-      <header className="bg-gray-50 text-center p-3 bottom-0 w-full flex justify-evenly fixed">
+      <header className="bg-gray-50 text-center p-3 bottom-0 w-4/5 flex justify-evenly fixed">
         <button className="btn" onClick={generateQuestions}>
           Generate Questions &amp; Answers from Website
         </button>
