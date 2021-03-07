@@ -9,8 +9,8 @@ export default function BotMenu({
   const [editOn, setEditOn] = useState(false);
 
   return (
-    <div className="fixed bg-white top-0 left-0 w-1/5 shadow flex flex-col h-screen justify-between">
-      <h1 className="text-5xl mt-3 text-center p-3 font-medium">Your Bots</h1>
+    <div className="border-4 border-gray-100 rounded-md p-3 bg-white my-3 shadow-md mx-2 max-h-screen fixed left-0 top-14">
+      <h1 className="text-5xl py-1 text-center px-3 font-medium mb-5">Your Bots</h1>
       {bots.map((bot, index) =>
         editOn ? (
           currentBotIndex !== index ? (
@@ -51,7 +51,7 @@ export default function BotMenu({
         )
       )}
       <button
-        className="btn bottom-1 bg-green-300 hover:bg-green-200"
+        className="btn rounded-md w-full mt-5 text-2xl text-semibold bg-green-300 hover:bg-green-200"
         onClick={addBot}
       >
         Add Bot

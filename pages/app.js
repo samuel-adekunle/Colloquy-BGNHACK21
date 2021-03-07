@@ -261,7 +261,8 @@ function App({ userBots, userKey }) {
   };
 
   return (
-    <div className="text-gray-900 flex flex-col h-screen justify-between bg-gray-50">
+    <div className="text-gray-900 flex flex-col h-screen justify-between bg-gray-100">
+      <HeaderBar name={bots[currentBotIndex].name} />
       <div className="grid grid-cols-5">
         <div>
           <BotMenu
@@ -273,7 +274,6 @@ function App({ userBots, userKey }) {
           />
         </div>
         <div className="col-span-4">
-          <HeaderBar name={bots[currentBotIndex].name} />
           <BotDashboard
             bots={bots}
             currentBotIndex={currentBotIndex}

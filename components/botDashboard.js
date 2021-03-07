@@ -21,6 +21,13 @@ export default function BotDashboard({
 
   return (
     <>
+      <ButtonFooter
+        removeBot={removeBot}
+        canDelete={bots.length !== 1}
+        trainBot={trainBot}
+        training={training}
+        importTemplates={importTemplates}
+      />
       <div className="m-9">
         {questionGroups &&
           questionGroups.map((group, index) => (
@@ -65,13 +72,7 @@ export default function BotDashboard({
           )}
         </span>
       </div>
-      <ButtonFooter
-        removeBot={removeBot}
-        canDelete={bots.length !== 1}
-        trainBot={trainBot}
-        training={training}
-        importTemplates={importTemplates}
-      />
+      
     </>
   );
 }
