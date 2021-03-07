@@ -58,6 +58,8 @@ function App({ userBots, userKey }) {
     ref.set(newState);
 
     setBots(newState);
+
+		setCurrentBotIndex(bots.length)
   };
 
   const removeBot = () => {
