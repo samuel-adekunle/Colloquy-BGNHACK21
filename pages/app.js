@@ -139,16 +139,16 @@ function App({ userBots, userKey }) {
 
 		const templateIndex = window.prompt(
 			`Select a template to import: \n${templates}`, "1")
-
-		const selectedKey = templateKeys[Number(templateIndex) - 1]
-
-		let _intents = await getTemplate(TEMPLATES[selectedKey])
-
-		for (let _intent of _intents) {
-			_intent["uid"] = keyGen("gg")
+		if (templateIndex !== null) {
+			const selectedKey = templateKeys[Number(templateIndex) - 1]
+			let _intents = await getTemplate(TEMPLATES[selectedKey])
+			for (let _intent of _intents) {
+				_intent["uid"] = keyGen("gg")
+			}
+			addIntents(_intents)
 		}
 
-		addIntents(_intents)
+		
 	}
 
 	const changeTitle = (index, inputText) => {
