@@ -3,7 +3,8 @@ import ButtonFooter from "./buttonFooter";
 import QuestionCard from "./questionCard";
 
 export default function BotDashboard({
-  bot,
+  bots,
+	currentBotIndex,
   addGroup,
   removeGroup,
   removeQuestionAt,
@@ -14,8 +15,9 @@ export default function BotDashboard({
   removeBot,
   canDelete,
   addUrlGeneratedQuestions,
+	trainBot
 }) {
-  const { intents: questionGroups } = bot;
+  const { intents: questionGroups } = bots[currentBotIndex];
 
   return (
     <>
@@ -64,8 +66,9 @@ export default function BotDashboard({
       </div>
       <ButtonFooter
         removeBot={removeBot}
-        canDelete={canDelete}
+        canDelete={(bots.length !== 1)}
         addUrlGeneratedQuestions={addUrlGeneratedQuestions}
+				trainBot={trainBot}
       />
     </>
   );

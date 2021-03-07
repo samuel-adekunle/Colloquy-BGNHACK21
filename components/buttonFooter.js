@@ -1,19 +1,20 @@
 const intentsTest = [
-  {
-    tag: "hello",
-    patterns: ["hi", "how are you"],
-    responses: ["hey"],
-  },
-  {
-    tag: "test",
-    patterns: ["jkl", "asdf"],
-    responses: ["1234"],
-  },
+	{
+		tag: "hello",
+		patterns: ["hi", "how are you"],
+		responses: ["hey"],
+	},
+	{
+		tag: "test",
+		patterns: ["jkl", "asdf"],
+		responses: ["1234"],
+	},
 ];
 export default function ButtonFooter({
-  removeBot,
-  canDelete,
-  addUrlGeneratedQuestions,
+	removeBot,
+	canDelete,
+	addUrlGeneratedQuestions,
+	trainBot
 }) {
   const generateQuestions = () => {
     let url = prompt("Enter the website url:");

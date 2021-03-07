@@ -1,21 +1,22 @@
 import admin from "firebase-admin";
 import firebase from "firebase/app";
 import {
-  AuthAction,
-  useAuthUser,
-  withAuthUser,
-  withAuthUserTokenSSR,
+	AuthAction,
+	useAuthUser,
+	withAuthUser,
+	withAuthUserTokenSSR
 } from "next-firebase-auth";
 import { useState } from "react";
 import Loader from "react-loader-spinner";
 import BotDashboard from "../components/botDashboard";
 import BotMenu from "../components/botMenu";
 import HeaderBar from "../components/headerBar";
+import { getSecretKey, trainModel } from "../utils/chatApi";
 import { makeKeyGenerator } from "../utils/keyGen";
 
 export const keyGen = makeKeyGenerator();
 
-function App({ userBots }) {
+function App({ userBots, userKey }) {
   const authUser = useAuthUser();
   const db = firebase.database();
 
@@ -98,15 +99,18 @@ function App({ userBots }) {
   };
 
   const addIntents = (newIntents) => {
-    setBots((prevState) => {
-      let oldBot = prevState[currentBotIndex];
-      oldBot.intents = [...oldBot.intents, ...newIntents];
-      return [
-        ...prevState.slice(0, currentBotIndex),
-        oldBot,
-        ...prevState.slice(currentBotIndex + 1),
-      ];
-    });
+		let oldBot = bots[currentBotIndex];
+		oldBot.intents = [...oldBot.intents, ...newIntents];
+
+		const newState = [
+			...bots.slice(0, currentBotIndex),
+			oldBot,
+			...bots.slice(currentBotIndex + 1),
+		];
+
+		ref.set(newState)
+
+    setBots(newState);
   };
 
   const changeTitle = (index, inputText) => {
@@ -195,6 +199,11 @@ function App({ userBots }) {
     setBots(newState);
   };
 
+	const trainBot = async () => {
+		trainModel(userKey, bots[currentBotIndex]["uid"])
+		.then(window.alert("Done Training Model"))
+	}
+
   return (
     <div className="text-gray-900 flex flex-col h-screen justify-between">
       <div className="grid grid-cols-5">
@@ -210,7 +219,8 @@ function App({ userBots }) {
         <div className="col-span-4">
         <HeaderBar name={bots[currentBotIndex].name}/>
           <BotDashboard
-            bot={bots[currentBotIndex]}
+            bots={bots}
+						currentBotIndex={currentBotIndex}
             addGroup={addGroup}
             removeGroup={removeGroup}
             addQuestionAt={addQuestionAt}
@@ -219,8 +229,8 @@ function App({ userBots }) {
             changeTitle={changeTitle}
             removeQuestionAt={removeQuestionAt}
             removeBot={removeBot}
-            canDelete={bots.length !== 1}
             addUrlGeneratedQuestions={addIntents}
+						trainBot={trainBot}
           />
         </div>
       </div>
@@ -246,11 +256,21 @@ export const getServerSideProps = withAuthUserTokenSSR({
   const db = admin.database();
 
   const uid = AuthUser.id;
-  const ref = db.ref(`/bots/${uid}`);
-  let userData = (await ref.get()).toJSON();
+  const bots = db.ref(`/bots/${uid}`);
+	const key = db.ref(`/keys/${uid}`);
+	
+  let userBots = (await bots.get()).toJSON();
+	let userKey = (await key.get()).toJSON();
 
-  if (userData === null) {
-    await ref.set([
+	if (userKey === null) {
+		const _key = await getSecretKey(AuthUser.email, AuthUser.id)
+		await key.set(_key)
+
+		userKey = (await key.get()).toJSON();
+	}
+
+  if (userBots === null) {
+    await bots.set([
       {
         uid: keyGen("bb"),
         name: "new bot",
@@ -265,12 +285,12 @@ export const getServerSideProps = withAuthUserTokenSSR({
       },
     ]);
 
-    userData = (await ref.get()).toJSON();
+    userBots = (await bots.get()).toJSON();
   }
 
-  userData = arrayFromObject(userData);
+  userBots = arrayFromObject(userBots);
 
-  for (const item of userData) {
+  for (const item of userBots) {
     item["intents"] = arrayFromObject(item["intents"]);
 
     for (const intent of item["intents"]) {
@@ -281,7 +301,8 @@ export const getServerSideProps = withAuthUserTokenSSR({
 
   return {
     props: {
-      userBots: userData,
+      userBots,
+			userKey
     },
   };
 });
