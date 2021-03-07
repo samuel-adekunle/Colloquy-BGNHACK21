@@ -22,7 +22,7 @@ const initAuth = () => {
         projectId: 'dtasks-bgn21',
         clientEmail: 'firebase-adminsdk-ohbm9@dtasks-bgn21.iam.gserviceaccount.com',
         // The private key must not be accesssible on the client side.
-        privateKey: process.env.FIREBASE_PRIVATE_KEY,
+        privateKey: process.env.FIREBASE_PRIVATE_KEY
       },
       databaseURL: firebaseConfig.databaseURL,
     },

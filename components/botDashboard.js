@@ -16,6 +16,7 @@ export default function BotDashboard({
   trainBot,
   training,
   importTemplates,
+	testBot
 }) {
   const { intents: questionGroups } = bots[currentBotIndex];
 
