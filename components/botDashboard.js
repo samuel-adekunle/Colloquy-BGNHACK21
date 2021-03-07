@@ -18,12 +18,13 @@ export default function BotDashboard({
   importTemplates,
 	testBot
 }) {
-  const { intents: questionGroups } = bots[currentBotIndex];
+  const { intents: questionGroups, isTrained } = bots[currentBotIndex];
 
   return (
     <>
       <div className="mx-9 my-3">
       <ButtonFooter
+				isTrained={isTrained}
         removeBot={removeBot}
         canDelete={bots.length !== 1}
         trainBot={trainBot}
