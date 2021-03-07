@@ -27,29 +27,32 @@ function Auth() {
   };
 
   return (
-    <div className="pt-80">
-      <div className="mx-auto w-min">
-        <h1 className="text-3xl text-center pb-4">Authentication</h1>
-        <span>
-          Email:{" "}
+    <div className="p-1/5 bg-gradient-to-r from-blue-500 via-indigo-400 to-blue-500">
+      <div className="mx-auto p-5 border rounded-xl shadow-lg w-min whitespace-pre space-y-5 bg-gray-50">
+        <h1 className="text-3xl text-center pb-3 font-medium">Register or Login</h1>
+        <div className="mb-3">
+          <label className="block pl-1 font-light text-lg" htmlFor="Email">Email</label>
           <input
+            id="Email"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="oneLineInput bg-gray-50"
           />
-        </span>
-        <span>
-          Password:{" "}
+        </div>
+        <div>
+        <label className="block pl-1  font-light text-lg" htmlFor="Password">Password</label>
           <input
+            id="Password"
             type="password"
             value={password}
+            className="oneLineInput bg-gray-50"
             onChange={(e) => setPassword(e.target.value)}
           />
-        </span>
+        </div>
         <div className="flex justify-center pt-4">
           <button
-            className="px-4 py-2 rounded focus:outline-none focus:ring-1 focus:ring-blue-800"
-            style={{ border: "1px solid black" }}
+            className="btn py-2 focus:ring-blue-800 border-0 bg-blue-500 uppercase tracking-wider font-semibold text-white shadow-lg hover:bg-blue-400"
             onClick={() => handleSubmit()}
           >
             Submit

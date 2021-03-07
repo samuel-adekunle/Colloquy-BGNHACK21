@@ -17,6 +17,9 @@
   .inputBox{
     @apply rounded-lg border-blue-100 border-2 pl-2;
   }
+  .oneLineInput{
+    @apply rounded-sm border-0 border-b-2 pt-1 pb-2;
+  }
   .phantom {
     display: block;
     padding: 20px;
