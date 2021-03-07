@@ -14,7 +14,8 @@ export default function BotDashboard({
   changeQuestion,
   removeBot,
   addUrlGeneratedQuestions,
-	trainBot
+	trainBot,
+	training
 }) {
   const { intents: questionGroups } = bots[currentBotIndex];
 
@@ -68,6 +69,7 @@ export default function BotDashboard({
         canDelete={(bots.length !== 1)}
         addUrlGeneratedQuestions={addUrlGeneratedQuestions}
 				trainBot={trainBot}
+				training={training}
       />
     </>
   );

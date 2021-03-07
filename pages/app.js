@@ -26,6 +26,8 @@ function App({ userBots, userKey }) {
 
   const [currentBotIndex, setCurrentBotIndex] = useState(0);
 
+	const [training, setTraining] = useState(false)
+
   const addBot = () => {
     const newState = [
       ...bots,
@@ -199,10 +201,16 @@ function App({ userBots, userKey }) {
     setBots(newState);
   };
 
-	const trainBot = () => {
+	const trainBot = async () => {
+		setTraining(true)
+		const botName = bots[currentBotIndex]["name"]
 		trainModel(userKey, bots[currentBotIndex]["uid"], bots[currentBotIndex]["intents"])
-		.then(window.alert("Done Training Bot"))
-		.catch(console.log)
+		.then((res) => res.json())
+		.then((resJson) => {
+			window.alert(`Finished training ${botName}`)
+			console.log(resJson)
+			setTraining(false)
+		})
 	}
 
   return (
@@ -232,6 +240,7 @@ function App({ userBots, userKey }) {
             removeBot={removeBot}
             addUrlGeneratedQuestions={addIntents}
 						trainBot={trainBot}
+						training={training}
           />
         </div>
       </div>

@@ -1,7 +1,7 @@
 const BASE_URL = "http://ec2-18-135-99-244.eu-west-2.compute.amazonaws.com"
 
 export async function createUser(email, uid) {
-	let res = await fetch(`${BASE_URL}/createUser/username=${email}/password=${uid}`)
+	return await fetch(`${BASE_URL}/createUser/username=${email}/password=${uid}`)
 	// res = await res.json()
 	// console.log(res)
 }
@@ -13,15 +13,15 @@ export async function getSecretKey(email, uid) {
 }
 
 export async function trainModel(secretKey, botUID, intents) {
-	let res = await fetch(`${BASE_URL}/trainNewModel/secretkey=${secretKey}/modelName=${botUID}`, {
+	return await fetch(`${BASE_URL}/trainNewModel/secretkey=${secretKey}/modelName=${botUID}`, {
 		method: "POST",
 		body: JSON.stringify({intents}),
 		headers: {
 			"Content-Type": "application/json"
 		}
 	})
-	res = await res.json()
-	console.log(res)
+	// res = await res.json()
+	// console.log(res)
 }
 
 export async function getResponse(secretKey, botUID, message) {
