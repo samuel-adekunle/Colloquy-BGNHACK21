@@ -5,7 +5,8 @@ export default function ButtonFooter({
 	training,
 	importTemplates,
 	testBot,
-	isTrained
+	isTrained,
+	generateEmbed
 }) {
 	return (
 		<div>
@@ -21,7 +22,7 @@ export default function ButtonFooter({
 				{isTrained && (
 					<>
 						<button className="btn" onClick={testBot}>Test Bot</button>
-						<button className="btn">Generate Embed</button>
+						<button className="btn" onClick={generateEmbed}>Generate Embed</button>
 					</>
 				)}
 				{canDelete && (
