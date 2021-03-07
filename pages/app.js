@@ -50,6 +50,14 @@ function App() {
 		});
 	};
 
+	const addIntents = (newIntents) => {
+		setBots((prevState) => {
+			let oldBot = prevState[currentBotIndex];
+			oldBot.intents = [...oldBot.intents, newIntents];
+			return [...prevState.slice(0, currentBotIndex), oldBot, ...prevState.slice(currentBotIndex + 1)]
+		});
+	}
+
 	const changeTitle = (index, inputText) => {
 		setBots((prevState) => {
 			let oldBot = prevState[currentBotIndex]
@@ -134,6 +142,7 @@ function App() {
 						changeTitle={changeTitle}
 						removeQuestionAt={removeQuestionAt}
 						removeBot={removeBot}
+						addUrlGeneratedQuestions={addIntents}
 					/>
 				</div>
 			</div>
