@@ -28,6 +28,7 @@ export default function BotDashboard({
         canDelete={bots.length !== 1}
         trainBot={trainBot}
         training={training}
+				testBot={testBot}
         importTemplates={importTemplates}
       />
         {questionGroups &&
