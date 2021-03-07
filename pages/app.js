@@ -261,7 +261,7 @@ function App({ userBots, userKey }) {
   };
 
   return (
-    <div className="text-gray-900 flex flex-col h-screen justify-between">
+    <div className="text-gray-900 flex flex-col h-screen justify-between bg-gray-50">
       <div className="grid grid-cols-5">
         <div>
           <BotMenu
