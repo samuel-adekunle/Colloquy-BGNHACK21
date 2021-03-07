@@ -126,7 +126,7 @@ function App({ userBots, userKey }) {
 		const selectedKey = templateKeys[Number(templateIndex) - 1]
 
 		let _intents = await getTemplate(TEMPLATES[selectedKey])
-		
+
 		for (let _intent of _intents) {
 			_intent["uid"] = keyGen("gg")
 		}
@@ -320,11 +320,18 @@ export const getServerSideProps = withAuthUserTokenSSR({
 	userBots = arrayFromObject(userBots);
 
 	for (const item of userBots) {
-		item["intents"] = arrayFromObject(item["intents"]);
 
-		for (const intent of item["intents"]) {
-			intent["patterns"] = arrayFromObject(intent["patterns"]);
-			intent["responses"] = arrayFromObject(intent["responses"]);
+		if (item["intents"]) {
+			item["intents"] = arrayFromObject(item["intents"]);
+
+			for (const intent of item["intents"]) {
+				if (intent["patterns"]) {
+					intent["patterns"] = arrayFromObject(intent["patterns"]);
+				}
+				if (intent["responses"]) {
+					intent["responses"] = arrayFromObject(intent["responses"]);
+				}
+			}
 		}
 	}
 
