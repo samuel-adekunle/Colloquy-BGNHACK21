@@ -5,7 +5,7 @@
 
 @layer components{
   .btn{
-    @apply border-2 shadow p-4 rounded
+    @apply border-2 shadow p-4 rounded-md
           focus:outline-none focus:ring-opacity-50 focus:ring focus:ring-offset-1
           transform transition hover:-translate-y-0.5;
   }
@@ -23,7 +23,7 @@
   .phantom {
     display: block;
     padding: 20px;
-    height: 60px;
+    height: 100%;
     width: 100%;
   }
 }

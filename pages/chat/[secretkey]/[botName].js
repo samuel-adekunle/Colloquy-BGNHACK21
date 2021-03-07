@@ -80,20 +80,16 @@ const Chat = () => {
 				style={{
 					height: 600,
 					width: 400,
-					marginTop: 50,
-					marginBottom: 50,
-					marginLeft: 200,
-					// border: "2px solid blue",
+					backgroundColor: "white"
 				}}
 			>
-				<h2 style={{ backgroundColor: "#EE6E73", padding: 15 }}>Chat</h2>
+				<h2 style={{ backgroundColor: "#EE6E73", padding: 15, marginTop: 0, marginBottom: 0, height: "15%" }}>Chat</h2>
 				<div
 					id="chatbot"
 					style={{
-						height: "75%",
+						height: "85%",
 						width: "100%",
 						overflow: "auto",
-						// border: "2px solid black",
 						borderColor: "#EE6E73",
 					}}
 				>
