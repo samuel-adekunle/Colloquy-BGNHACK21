@@ -1,4 +1,5 @@
 import { useAuthUser } from "next-firebase-auth";
+import { IoExitOutline } from "react-icons/io5";
 
 export default function HeaderBar({ name }) {
   const authUser = useAuthUser();
@@ -8,10 +9,10 @@ export default function HeaderBar({ name }) {
         {name}
       </h2>
       <button
-        className="btn justify-self-end p-2 border-0 bg-gray-500"
+        className="btn justify-self-end mx-7 p-1 border-0 bg-gray-500 bg-opacity-90"
         onClick={() => authUser.signOut()}
       >
-        Sign Out
+        <IoExitOutline size={28}/>
       </button>
     </header>
   );

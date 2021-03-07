@@ -51,7 +51,7 @@ export default function BotMenu({
         )
       )}
       <button
-        className="btn rounded-md w-full mt-5 text-2xl text-semibold bg-green-300 hover:bg-green-200"
+        className="btn w-full mt-5 text-2xl text-semibold bg-green-300 hover:bg-green-200"
         onClick={addBot}
       >
         Add Bot
