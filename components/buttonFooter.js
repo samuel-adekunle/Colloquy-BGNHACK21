@@ -21,12 +21,6 @@ export default function ButtonFooter({
     // some code to use the url to get the intents
     addUrlGeneratedQuestions(intentsTest);
   };
-  const phantomStyle = {
-    display: "block",
-    padding: "20px",
-    height: "60px",
-    width: "100%"
-  };
   return (
     <div>
       <div className="phantom" />
@@ -38,7 +32,7 @@ export default function ButtonFooter({
         <button className="btn">Test Bot</button>
         <button className="btn">Generate Embed</button>
 
-        {canDelete && (
+        {canDelete && ( //what is this and why is it here? the button doesn't show at all for me anymore -Tof
           <button className="btn bg-red-300 hover:bg-red-200" onClick={removeBot}>
             Delete Bot
           </button>
