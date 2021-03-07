@@ -1,5 +1,6 @@
 export default function ButtonFooter({
-	removeBot
+	removeBot,
+	canDelete
 }) {
   const generateQuestions = () => {
     let url = prompt("Enter the website url:");
@@ -13,7 +14,8 @@ export default function ButtonFooter({
       <button className="footerBtn">Train Bot</button>
       <button className="footerBtn">Test Bot</button>
       <button className="footerBtn">Generate Embed</button>
-			<button className="footerBtn bg-red-300" onClick={removeBot}>Delete Bot</button>
+
+			{canDelete && <button className="footerBtn bg-red-300" onClick={removeBot}>Delete Bot</button>}
     </header>
   );
 }

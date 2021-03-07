@@ -1,8 +1,9 @@
 import { init } from 'next-firebase-auth';
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyBHUACDyden56YRTm1QVQWiPdYEwaC0-U8",
   authDomain: "dtasks-bgn21.firebaseapp.com",
+  databaseURL: "https://dtasks-bgn21-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "dtasks-bgn21",
   storageBucket: "dtasks-bgn21.appspot.com",
   messagingSenderId: "865012238343",
@@ -23,7 +24,7 @@ const initAuth = () => {
         // The private key must not be accesssible on the client side.
         privateKey: process.env.FIREBASE_PRIVATE_KEY,
       },
-      // databaseURL: 'https://dtasks-bgn21.firebaseio.com',
+      databaseURL: firebaseConfig.databaseURL,
     },
     firebaseClientInitConfig: firebaseConfig,
     cookies: {

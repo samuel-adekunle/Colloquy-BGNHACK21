@@ -11,7 +11,8 @@ export default function BotDashboard({
 	changeAnswer,
 	changeTitle,
 	changeQuestion,
-	removeBot
+	removeBot,
+	canDelete
 }) {
 	const {intents: questionGroups} = bot
 	
@@ -59,6 +60,6 @@ export default function BotDashboard({
 				)}
 			</span>
 		</div>
-		<ButtonFooter removeBot={removeBot} />
+		<ButtonFooter removeBot={removeBot} canDelete={canDelete} />
 	</>
 }
