@@ -19,8 +19,7 @@ export default function ButtonFooter({
 }) {
   return (
     <div>
-      <div className="phantom" />
-      <header className="bg-gray-50 text-center p-3 bottom-0 w-4/5 flex justify-evenly fixed">
+      <header className="border-4 border-gray-100 rounded-md p-3 bg-white mb-3 shadow-md text-center flex justify-evenly">
         <button className="btn" onClick={importTemplates}>
           Import template
         </button>

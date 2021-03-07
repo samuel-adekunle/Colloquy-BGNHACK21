@@ -9,7 +9,7 @@ export default function BotMenu({
   const [editOn, setEditOn] = useState(false);
 
   return (
-    <div className="border-4 border-gray-100 rounded-md p-3 bg-white my-3 shadow-md mx-2 max-h-screen fixed left-0 top-14">
+    <div className="border-4 border-gray-100 rounded-md p-3 bg-white my-3 shadow-md mx-2 fixed max-w-1/5">
       <h1 className="text-5xl py-1 text-center px-3 font-medium mb-5">Your Bots</h1>
       {bots.map((bot, index) =>
         editOn ? (

@@ -21,6 +21,7 @@ export default function BotDashboard({
 
   return (
     <>
+      <div className="mx-9 my-3">
       <ButtonFooter
         removeBot={removeBot}
         canDelete={bots.length !== 1}
@@ -28,7 +29,6 @@ export default function BotDashboard({
         training={training}
         importTemplates={importTemplates}
       />
-      <div className="m-9">
         {questionGroups &&
           questionGroups.map((group, index) => (
             <QuestionCard
