@@ -15,7 +15,7 @@
           transform transition hover:-translate-y-0.5 hover:bg-gray-100 hover:text-indigo-800;
   }
   .inputBox{
-    @apply rounded-lg border-blue-100 border-2 pl-2;
+    @apply border-blue-100 pl-2 bg-gray-50 bg-opacity-30;
   }
   .oneLineInput{
     @apply rounded-sm border-0 border-b-2 pt-1 pb-2;
