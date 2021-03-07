@@ -16,7 +16,8 @@ export default function BotDashboard({
   trainBot,
   training,
   importTemplates,
-	testBot
+	testBot,
+	generateEmbed
 }) {
   const { intents: questionGroups, isTrained } = bots[currentBotIndex];
 
@@ -31,7 +32,7 @@ export default function BotDashboard({
         training={training}
 				testBot={testBot}
         importTemplates={importTemplates}
-        testBot={testBot}
+				generateEmbed={generateEmbed}
       />
         {questionGroups &&
           questionGroups.map((group, index) => (
