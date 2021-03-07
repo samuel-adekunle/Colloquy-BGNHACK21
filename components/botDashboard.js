@@ -12,7 +12,7 @@ export default function BotDashboard({
 	changeTitle,
 	changeQuestion,
 	removeBot,
-	canDelete
+	canDelete,
 	addUrlGeneratedQuestions
 }) {
 	const {intents: questionGroups} = bot
