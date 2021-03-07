@@ -98,7 +98,11 @@ function App({ userBots, userKey }) {
 
 	const addQuestionAt = (index) => {
 		let oldBot = bots[currentBotIndex];
-		oldBot.intents[index].patterns.push("");
+		if (oldBot.intents[index].patterns) {
+			oldBot.intents[index].patterns.push("");
+		} else {
+			oldBot.intents[index].patterns = [""]
+		}
 
 		const newState = [
 			...bots.slice(0, currentBotIndex),
