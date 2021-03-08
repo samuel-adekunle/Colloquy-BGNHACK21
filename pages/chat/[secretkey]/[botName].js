@@ -79,29 +79,25 @@ const Chat = () => {
 				<link rel="manifest" href="/site.webmanifest"></link>
 			</Head>
 			<div
-				style={{
-					height: 600,
-					width: 500,
-					backgroundColor: "white",
-				}}
+				className="chat-window"
 			>
 				<div
 					id="chatBot"
-					style={{
-						
-					}}
 				>
 					{renderMessages(messages)}
-					<div className="input-container">
+					
+				</div>
+			</div>
+			<div className="input-container">
 						<input
 							ref={messagesEnd}
 							type="text"
 							placeholder="Say Hi..."
 							onKeyPress={_handleInputKeyPress}
-						/>
+						>
+						
+						</input>
 					</div>
-				</div>
-			</div>
 		</>
 	);
 };
