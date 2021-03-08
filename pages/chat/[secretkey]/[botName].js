@@ -78,26 +78,35 @@ const Chat = () => {
 				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 				<link rel="manifest" href="/site.webmanifest"></link>
 			</Head>
-			<div
-				className="chat-window"
-			>
-				<div
-					id="chatBot"
-				>
-					{renderMessages(messages)}
-					
+
+			<div>
+				<div className="text-8xl nav">
+					<h1 className="logo cursor-pointer" onClick={() => {
+						router.push("/app")
+					}}>Colloquy</h1>				
 				</div>
-			</div>
-			<div className="input-container">
+				<div className="mx-auto w-min pt-24">
+					<img className="splash" src='/assets/flat_background.svg'></img>
+					<div
+						className="chat-window"
+					>
+						<div
+							id="chatBot"
+						>
+							{renderMessages(messages)}
+
+						</div>
+					</div>
+					<div className="input-container">
 						<input
 							ref={messagesEnd}
 							type="text"
 							placeholder="Say Hi..."
 							onKeyPress={_handleInputKeyPress}
-						>
-						
-						</input>
+						/>
 					</div>
+				</div>
+			</div>
 		</>
 	);
 };
