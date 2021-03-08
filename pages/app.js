@@ -130,7 +130,11 @@ function App({ userBots, userKey }) {
 
   const addIntents = (newIntents) => {
     let oldBot = bots[currentBotIndex];
-    oldBot.intents = [...oldBot.intents, ...newIntents];
+		if (oldBot.intents) {
+			oldBot.intents = [...oldBot.intents, ...newIntents]
+		} else {
+			oldBot.intents = [...newIntents];
+		}
 
     const newState = [
       ...bots.slice(0, currentBotIndex),
