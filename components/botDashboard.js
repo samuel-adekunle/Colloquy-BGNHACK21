@@ -50,28 +50,28 @@ export default function BotDashboard({
             />
           ))}
 
-        <span className="flex justify-around">
+        <span className="flex justify-around my-3">
           <button
-            className="w-full bg-green-100 grid grid-cols-1 justify-items-center py-1 rounded 
+            className="w-full bg-green-100 grid grid-cols-1 justify-items-center mx-2 py-3 rounded 
               focus:ring-green-200 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2
               hover:bg-green-200"
             onClick={addGroup}
           >
             <i>
-              <FaPlus size={42} />
+              <FaPlus size={20} />
             </i>
           </button>
           {!questionGroups || questionGroups.length === 0 ? (
             <span />
           ) : (
             <button
-              className="w-full bg-red-100 grid grid-cols-1 justify-items-center py-1 rounded 
+              className="w-full bg-red-100 grid grid-cols-1 justify-items-center mx-2 py-3 rounded 
                 focus:ring-red-200 focus:ring-opacity-50 focus:outline-none
                 focus:ring focus:ring-offset-2 hover:bg-red-200"
               onClick={removeGroup}
             >
               <i>
-                <FaMinus size={42} />
+                <FaMinus size={20} />
               </i>
             </button>
           )}
