@@ -79,26 +79,25 @@ const Chat = () => {
 			<div
 				style={{
 					height: 600,
-					width: 400,
-					backgroundColor: "white"
+					width: 500,
+					backgroundColor: "white",
 				}}
 			>
-				<h2 style={{ backgroundColor: "#EE6E73", padding: 15, marginTop: 0, marginBottom: 0, height: "15%" }}>Chat</h2>
 				<div
-					id="chatbot"
+					id="chatBot"
 					style={{
-						height: "85%",
-						width: "100%",
-						overflow: "auto",
-						borderColor: "#EE6E73",
+						
 					}}
 				>
 					{renderMessages(messages)}
-					<input
-						ref={messagesEnd}
-						type="text"
-						onKeyPress={_handleInputKeyPress}
-					/>
+					<div className="input-container">
+						<input
+							ref={messagesEnd}
+							type="text"
+							placeholder="Say Hi..."
+							onKeyPress={_handleInputKeyPress}
+						/>
+					</div>
 				</div>
 			</div>
 		</>
