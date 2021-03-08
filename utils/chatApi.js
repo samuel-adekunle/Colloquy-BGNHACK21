@@ -1,4 +1,4 @@
-const BASE_URL = "http://ec2-18-135-99-244.eu-west-2.compute.amazonaws.com"
+const BASE_URL = "https://www.colloquychatbotapi.com"
 
 export async function createUser(email, uid) {
 	return await fetch(`${BASE_URL}/createUser/username=${email}/password=${uid}`)
