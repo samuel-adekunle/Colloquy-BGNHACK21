@@ -1,6 +1,8 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export default function Index() {
+	const router = useRouter()
 	return (
 		<>
 			<Head>
@@ -12,7 +14,9 @@ export default function Index() {
 			</Head>
 			<div className="h-screen">
 				<div className="text-8xl nav">
-					<h1 className="logo">Colloquy</h1>
+					<h1 className="logo cursor-pointer" onClick={() => {
+						router.push("/app")
+					}}>Colloquy</h1>
 				</div>
 				<div className="mx-auto w-min pt-24">
 					<img className="splash" src='/assets/flat_background.svg'></img>
