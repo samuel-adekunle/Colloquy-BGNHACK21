@@ -22,7 +22,7 @@ export default function BotMenu({
                 key={bot.uid}
                 type="text"
                 value={bot.name}
-                className="text-3xl block border-none focus:outline-none rounded"
+                className="text-3xl block border-none focus:outline-none rounded max-w-full"
                 onChange={(e) => {
                   renameBot(index, e.target.value);
                 }}
