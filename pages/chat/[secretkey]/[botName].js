@@ -81,7 +81,9 @@ const Chat = () => {
 
 			<div>
 				<div className="text-8xl nav">
-					<h1 className="logo">Colloquy</h1>
+					<h1 className="logo cursor-pointer" onClick={() => {
+						router.push("/app")
+					}}>Colloquy</h1>				
 				</div>
 				<div className="mx-auto w-min pt-24">
 					<img className="splash" src='/assets/flat_background.svg'></img>
