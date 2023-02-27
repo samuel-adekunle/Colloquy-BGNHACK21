@@ -9,7 +9,7 @@
     "format": "prettier --write \"components/**/*.{js,jsx}\" \"pages/**/*.{js,jsx}\""
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.3.4",
     "firebase": "^8.2.10",
     "firebase-admin": "^9.5.0",
     "materialize-css": "^1.0.0",
