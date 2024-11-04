@@ -19,7 +19,7 @@
     "react-chat-widget": "^3.1.4",
     "react-dom": "17.0.1",
     "react-icons": "^4.2.0",
-    "react-loader-spinner": "^4.0.0",
+    "react-loader-spinner": "^6.1.6",
     "react-simple-chatbot": "^0.5.0",
     "styled-components": "^5.2.1"
   },
